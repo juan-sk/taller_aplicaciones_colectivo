@@ -1,0 +1,6 @@
+.zoom-container {
+    position: fixed;
+    top: 80%;
+    right: 15px;
+    float: right;
+}

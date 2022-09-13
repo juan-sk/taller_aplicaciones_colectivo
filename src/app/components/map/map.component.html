@@ -1,4 +1,6 @@
-<google-map height="500px" width="100%" [zoom]="zoom" [center]="center" [options]="options"
+<!-- <div> -->
+
+<google-map height="100%" width="100%" [zoom]="zoom" [center]="center" [options]="options"
     (mapClick)="autoPath($event)">
 
     <div *ngFor="let marker of markers; index as i ">
@@ -7,13 +9,18 @@
             [options]="markers[i].options"></map-marker>
     </div>
     <!-- 
-    <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
+        <map-marker *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
     [title]="marker.title" [options]="marker.options"></map-marker> -->
     <!-- <map-marker [position]="markers[0].position" [label]="markers[0].label" [title]="markers[0].title"
         [options]="markers[0].options"></map-marker> -->
 
     <map-polyline [options]="polylineOptions"></map-polyline>
 </google-map>
+<div class="zoom-container">
+    <button (click)="zoomIn()">+</button> <br>
+
+
+    <button (click)="zoomOut()">- &nbsp;</button>
+</div>
 <!-- Use custom zoom buttons -->
-<button (click)="zoomIn()">Zoom in</button>
-<button (click)="zoomOut()">Zoom out</button>
+<!-- </div> -->

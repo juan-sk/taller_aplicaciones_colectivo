@@ -16,7 +16,7 @@ export class MapComponent implements OnInit {
   path: google.maps.LatLng[] = []
   polylineOptions = {}
 
-
+  // height = window.screen.height;
 
   options: google.maps.MapOptions = new Object({
     mapTypeId: 'roadmap',
@@ -114,7 +114,7 @@ export class MapComponent implements OnInit {
   getColectivos() {
     let listaBase = [
       {
-        position: { lat: -33.51283, lng: -70.5663618 },
+        position: { lat: -33.51583, lng: -70.5673618 },
         label: {
           color: 'red',
           text: 'Marker label ' + (this.markers.length + 1),
@@ -138,5 +138,10 @@ export class MapComponent implements OnInit {
 
 
     return newLIst;
+  }
+
+  // @HostListener('window:scroll', ['$event']) // for window scroll events
+  onScroll(event: any) {
+    console.log({ event })
   }
 }

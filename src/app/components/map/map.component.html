@@ -1,6 +1,6 @@
 <!-- <div> -->
 
-<google-map height="100%" width="100%" [zoom]="zoom" [center]="center" [options]="options"
+<google-map *ngIf="showMap" height="100%" width="100%" [zoom]="zoom" [center]="center" [options]="options"
     (mapClick)="autoPath($event)">
 
     <div *ngFor="let marker of markers; index as i ">

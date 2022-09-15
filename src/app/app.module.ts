@@ -10,7 +10,8 @@ import { ContabilizadorComponent } from './components/colectivero/contabilizador
 import { DashboardComponent } from './components/supervisor/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { ButtonSwitchComponent } from './components/comunes/button-switch/button-switch.component';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,13 +20,17 @@ import { ButtonSwitchComponent } from './components/comunes/button-switch/button
     ContabilizadorComponent,
     DashboardComponent,
     LoginComponent,
-    ButtonSwitchComponent
+    ButtonSwitchComponent,
+
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    MatFormFieldModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

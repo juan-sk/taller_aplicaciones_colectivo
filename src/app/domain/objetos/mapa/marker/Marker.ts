@@ -9,7 +9,7 @@ export class Marker implements google.maps.Marker {
     title: string;
     options: google.maps.MarkerOptions;
 
-    constructor(icon: string, text: string) {
+    constructor(icon: string, text: any) {
         this.position = new google.maps.LatLng({ lat: 0, lng: 0 })
         this.label = new MarkerLabel(text)
         this.title = ""

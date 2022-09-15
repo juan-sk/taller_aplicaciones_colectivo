@@ -72,7 +72,7 @@ export class MapaPasajeroComponent implements OnInit {
         this.updateMap()
         this.showMap = true;
       }
-    }, 500)
+    }, 1000)
   }
 
   height = window.screen.height;
@@ -98,8 +98,7 @@ export class MapaPasajeroComponent implements OnInit {
   }
   direccion: boolean = false;
   getColectivos2() {
-    console.log(this.offset)
-    debugger
+    // console.log(this.offset)
     if (this.offset == this.path.length) {
       this.direccion = false;
     }
@@ -120,8 +119,10 @@ export class MapaPasajeroComponent implements OnInit {
 
     // this.offset++;
     let pos = this.path[this.offset]
-    let colectivo: Colectivo = new Colectivo(pos, "colectivo 1")
-    let listaBase = [colectivo]
+    let pos2 = this.path[this.offset + 1]
+    let colectivo: Colectivo = new Colectivo(pos, "undefined")
+    let colectivo2: Colectivo = new Colectivo(pos2, "colectivo 2")
+    let listaBase = [colectivo, colectivo2]
 
 
 

@@ -9,6 +9,7 @@ import { MapaPasajeroComponent } from './components/pasajero/mapa-pasajero/mapa-
 import { ContabilizadorComponent } from './components/colectivero/contabilizador/contabilizador.component';
 import { DashboardComponent } from './components/supervisor/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { ButtonSwitchComponent } from './components/comunes/button-switch/button-switch.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LoginComponent } from './components/login/login.component';
     MapaPasajeroComponent,
     ContabilizadorComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    ButtonSwitchComponent
   ],
 
   imports: [

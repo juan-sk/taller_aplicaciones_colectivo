@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  showFiller = false;
+  vista: string = "";
   constructor() { }
 
   ngOnInit(): void {
+  }
+  function($event: any) {
+    if ($event) {
+      this.vista = $event
+    }
   }
 
 }

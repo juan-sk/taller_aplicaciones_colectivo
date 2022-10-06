@@ -12,6 +12,12 @@ import { LoginComponent } from './components/login/login.component';
 import { ButtonSwitchComponent } from './components/comunes/button-switch/button-switch.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { LoadingComponent } from './components/comunes/loading/loading.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     DashboardComponent,
     LoginComponent,
     ButtonSwitchComponent,
+    LoadingComponent,
 
   ],
 
@@ -29,8 +36,10 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     GoogleMapsModule,
     MatFormFieldModule,
-    FormsModule
-
+    FormsModule,
+    MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    // public dialogRef: MatDialogRef
   ) { }
   returnUrl: string | undefined;
   ngOnInit() {
@@ -39,7 +40,6 @@ export class LoginComponent implements OnInit {
       user: this.user,
       password: this.pass
     }
-    console.log(payload)
     try {
       //validar con backend
       let response = await this.authService.login(payload)
@@ -47,10 +47,8 @@ export class LoginComponent implements OnInit {
       //guardar token
       //guardar perfil
       if (this.returnUrl) {
-        console.log(this.returnUrl)
         this.router.navigate([this.returnUrl])
       } else {
-        console.log("nada")
         this.router.navigate(["/"])
       }
     } catch (error) {
@@ -71,7 +69,17 @@ export class LoginComponent implements OnInit {
     return false;
   }
 
+  dialog() {
+    // let dialogRef = dialog.open(UserProfileComponent, {
+    //   height: '400px',
+    //   width: '600px',
+    // });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`); // Pizza!
+    // });
 
+    // dialogRef.close('Pizza!');
+  }
 
 
 }

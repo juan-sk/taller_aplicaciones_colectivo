@@ -4,30 +4,34 @@
         <mat-button-toggle value="usuarios">Usuarios</mat-button-toggle>
         <mat-button-toggle value="informes">Informes</mat-button-toggle>
         <mat-button-toggle value="administrar_flota">Administrar Flota</mat-button-toggle>
-        <mat-button-toggle value="vizualizar_flota">Vizualizar flota</mat-button-toggle>
+        <mat-button-toggle value="visualizar_flota">Visualizar flota</mat-button-toggle>
     </mat-button-toggle-group>
 </div>
+<mat-divider></mat-divider>
 <!-- aqui abajo se encuentran  los contenedores de cada modulo -->
 <div>
+    <mat-card>
 
-    <div *ngIf="vista == 'inicio'">
-        <!-- vista Inicio -->
-        <p>inicio</p>
-    </div>
-    <div *ngIf="vista == 'usuarios'">
-        <!-- vista Usuarios -->
-        <p>usuarios</p>
-    </div>
-    <div *ngIf="vista == 'informes'">
-        <!-- vista Informes-->
-        <p>informes</p>
-    </div>
-    <div *ngIf="vista == 'administrar_flota'">
-        <!-- vista Administrar Flota -->
-        <p>admin flota</p>
-    </div>
-    <div *ngIf="vista == 'vizualizar_flota'">
-        <!-- vista vizualizar flota -->
-        <p>vizualizar flota</p>
-    </div>
+
+        <div *ngIf="vista == 'inicio'">
+            <!-- vista Inicio -->
+            <app-inicio></app-inicio>
+        </div>
+        <div *ngIf="vista == 'usuarios'">
+            <!-- vista Usuarios -->
+            <app-usuarios></app-usuarios>
+        </div>
+        <div *ngIf="vista == 'informes'">
+            <!-- vista Informes-->
+            <app-informes></app-informes>
+        </div>
+        <div *ngIf="vista == 'administrar_flota'">
+            <!-- vista Administrar Flota -->
+            <app-admin-flota></app-admin-flota>
+        </div>
+        <div *ngIf="vista == 'visualizar_flota'">
+            <!-- vista vizualizar flota -->
+            <app-vis-flota></app-vis-flota>
+        </div>
+    </mat-card>
 </div>

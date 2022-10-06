@@ -17,6 +17,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { InicioComponent } from './components/supervisor/inicio/inicio.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { UsuariosComponent } from './components/supervisor/usuarios/usuarios.component';
+import { InformesComponent } from './components/supervisor/informes/informes.component';
+import { AdminFlotaComponent } from './components/supervisor/admin-flota/admin-flota.component';
+import { VisFlotaComponent } from './components/supervisor/vis-flota/vis-flota.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +35,11 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     LoginComponent,
     ButtonSwitchComponent,
     LoadingComponent,
+    InicioComponent,
+    UsuariosComponent,
+    InformesComponent,
+    AdminFlotaComponent,
+    VisFlotaComponent,
 
   ],
 
@@ -39,7 +51,9 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     FormsModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatCardModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

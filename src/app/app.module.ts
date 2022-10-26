@@ -25,6 +25,7 @@ import { InformesComponent } from './components/supervisor/informes/informes.com
 import { AdminFlotaComponent } from './components/supervisor/admin-flota/admin-flota.component';
 import { VisFlotaComponent } from './components/supervisor/vis-flota/vis-flota.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { MatTableModule } from '@angular/material/table';
     MatSidenavModule,
     MatButtonToggleModule,
     MatCardModule,
-    MatDividerModule, MatTableModule
+    MatDividerModule, MatTableModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

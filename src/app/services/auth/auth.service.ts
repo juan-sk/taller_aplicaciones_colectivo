@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { Utils } from '../Utils'
 @Injectable({
   providedIn: 'root'
 })
@@ -28,6 +28,8 @@ export class AuthService {
   }
 
   login(payload: any) {
+    let payloadBasic = Utils.basicAuthPayloadGenerator(payload.user, payload.pass);
+    let basicAuthHeader = `Basic ${payloadBasic}`
     return new Promise((resolve, reject) => {
 
       setTimeout(() => {

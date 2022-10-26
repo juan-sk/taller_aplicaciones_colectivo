@@ -1,0 +1,17 @@
+mat-button-toggle-group {
+    flex-wrap: wrap;
+}
+
+img {
+    display: inline;
+    height: 90px;
+    float: right;
+}
+
+@media only screen and (max-width: 600px) {
+    .user_icon {
+        visibility: hidden;
+    }
+
+
+}

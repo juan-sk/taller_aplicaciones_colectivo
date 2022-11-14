@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, createComponent, OnInit, ViewChild } from '@angular/core';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CrearComponent } from './crear/crear.component';
 export interface Usuario {
   rut: string;
   nombre: string;
@@ -36,7 +37,8 @@ export class UsuariosComponent implements OnInit {
   displayedColumns: string[] = ['rut', 'nombre', 'apellido', 'movil', "accion"];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor(private _liveAnnouncer: LiveAnnouncer) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer,
+    public dialog: MatDialog) { }
 
   @ViewChild(MatSort) sort: MatSort = new MatSort();
 
@@ -55,5 +57,18 @@ export class UsuariosComponent implements OnInit {
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+  crearUusuario() {
+
+    const dialogRef = this.dialog.open(CrearComponent, {
+      width: '500px',
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+
   }
 }

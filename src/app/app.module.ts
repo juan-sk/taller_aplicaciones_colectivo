@@ -19,6 +19,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { InicioComponent } from './components/supervisor/inicio/inicio.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { UsuariosComponent } from './components/supervisor/usuarios/usuarios.component';
 import { InformesComponent } from './components/supervisor/informes/informes.component';
@@ -26,6 +27,10 @@ import { AdminFlotaComponent } from './components/supervisor/admin-flota/admin-f
 import { VisFlotaComponent } from './components/supervisor/vis-flota/vis-flota.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import { CrearComponent } from './components/supervisor/usuarios/crear/crear.component';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +46,7 @@ import { MatButtonModule } from '@angular/material/button';
     InformesComponent,
     AdminFlotaComponent,
     VisFlotaComponent,
+    CrearComponent,
 
   ],
 
@@ -55,9 +61,11 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonToggleModule,
     MatCardModule,
     MatDividerModule, MatTableModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule,
+    BrowserAnimationsModule, MatInputModule, MatSelectModule
   ],
-  providers: [],
+  providers: [CrearComponent,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

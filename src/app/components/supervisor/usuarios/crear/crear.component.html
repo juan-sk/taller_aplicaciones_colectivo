@@ -1,30 +1,29 @@
 <div class="row">
-    <form class="example-form">
+    <form class="example-form" (ngSubmit)="enviar()" [formGroup]=usuarioForm>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Nombre</mat-label>
-            <input matInput placeholder="Nombre" value="">
+            <input matInput placeholder="Nombre" value="" formControlName="nombre">
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Apellido</mat-label>
-            <input matInput placeholder="Apellido" value="">
+            <input matInput placeholder="Apellido" value="" formControlName="apellido">
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Tipo Usuario</mat-label>
-            <mat-select>
+            <mat-select formControlName="tipoUsuario">
                 <mat-option value="one">First option</mat-option>
                 <mat-option value="two">Second option</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Fecha Nacimiento</mat-label>
-            <input matInput type="date" placeholder="Nombre" value="">
+            <input matInput type="date" placeholder="Nombre" value="" formControlName=fechaNacimiento>
         </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Nombre</mat-label>
-            <input matInput placeholder="Nombre" value="">
-        </mat-form-field>
+        <br>
+        <button type="submit" mat-button color="primary" [disabled]="!usuarioForm.valid">Enviar</button>
 
     </form>
+    <button mat-button onclick="cerrar()">Cancelar</button>
 </div>

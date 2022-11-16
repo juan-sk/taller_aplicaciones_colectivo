@@ -11,7 +11,7 @@ import { DashboardComponent } from './components/supervisor/dashboard/dashboard.
 import { LoginComponent } from './components/login/login.component';
 import { ButtonSwitchComponent } from './components/comunes/button-switch/button-switch.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/comunes/loading/loading.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -31,6 +31,7 @@ import { CrearComponent } from './components/supervisor/usuarios/crear/crear.com
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
+import { InformeComponent } from './services/informe/informe.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { MatSelectModule } from '@angular/material/select';
     AdminFlotaComponent,
     VisFlotaComponent,
     CrearComponent,
+    InformeComponent,
 
   ],
 
@@ -63,7 +65,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatDividerModule, MatTableModule,
     MatButtonModule,
     MatDialogModule,
-    BrowserAnimationsModule, MatInputModule, MatSelectModule
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatSelectModule
+    , ReactiveFormsModule
   ],
   providers: [CrearComponent,],
   bootstrap: [AppComponent]

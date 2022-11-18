@@ -9,7 +9,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class CrearComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<CrearComponent>) { }
+  constructor(
+    private dialogRef: MatDialogRef<CrearComponent>
+  ) { }
 
   usuarioForm = new FormGroup({
     nombre: new FormControl("",

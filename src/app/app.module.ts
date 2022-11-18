@@ -31,6 +31,8 @@ import { CrearComponent } from './components/supervisor/usuarios/crear/crear.com
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
+import { MantFlotaComponent } from './components/supervisor/admin-flota/mant-flota/mant-flota.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +49,7 @@ import { MatSelectModule } from '@angular/material/select';
     AdminFlotaComponent,
     VisFlotaComponent,
     CrearComponent,
+    MantFlotaComponent,
 
   ],
 
@@ -65,8 +68,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatSelectModule
-    , ReactiveFormsModule
+    MatSelectModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [CrearComponent,],
   bootstrap: [AppComponent]

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Colectivo } from 'src/app/domain/flota/Colectivo';
+import { MantFlotaComponent } from './mant-flota/mant-flota.component';
 
 const ELEMENT_DATA: Colectivo[] = [
   { nroColectivo: "01", patente: 'WS-JS-33', dueno: 'Dixon', marca: 'TOYOTA', modelo: "toyota" },
@@ -22,7 +24,7 @@ const ELEMENT_DATA: Colectivo[] = [
 
 export class AdminFlotaComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
 
   displayedColumns: string[] = ['nroColectivo', 'patente', 'dueno', 'marca', 'modelo', 'accion'];
@@ -30,6 +32,16 @@ export class AdminFlotaComponent implements OnInit {
   ngOnInit(): void {
   }
   crearColectivo() {
+
+    const dialogRef = this.dialog.open(MantFlotaComponent, {
+      width: '500px',
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
 
   }
 

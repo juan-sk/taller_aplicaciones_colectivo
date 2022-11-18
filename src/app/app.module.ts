@@ -31,7 +31,6 @@ import { CrearComponent } from './components/supervisor/usuarios/crear/crear.com
 import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
-import { InformeComponent } from './services/informe/informe.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +47,6 @@ import { InformeComponent } from './services/informe/informe.component';
     AdminFlotaComponent,
     VisFlotaComponent,
     CrearComponent,
-    InformeComponent,
 
   ],
 

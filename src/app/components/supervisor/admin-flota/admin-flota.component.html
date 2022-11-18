@@ -1,1 +1,66 @@
-<p>admin-flota works!</p>
+<div>
+    <br>
+    <div class="row">
+        <div class="col-8">
+
+            <h2>Administrar Flota</h2>
+        </div>
+        <div class="col-4">
+            <button mat-raised-button color="primary" (click)="crearColectivo()">agregar Colectivo</button>
+
+        </div>
+    </div>
+    <br><br>
+
+    <!-- tabla / lista usuarios -->
+    <table mat-table [dataSource]="dataSource" matSort class="
+        mat-elevation-z8" style="width: 100%;">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="nroColectivo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="ordenar por numero colectivo">
+                N° Colectivo
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.nroColectivo}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="patente">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por Patente">
+                Patente
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.patente}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="dueno">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por dueño">
+                Dueño
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.dueno}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="marca">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por Marca">
+                Marca
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.marca}} </td>
+        </ng-container>
+        <ng-container matColumnDef="modelo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por modelo">
+                odelo
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.modelo}} </td>
+        </ng-container>
+        <ng-container matColumnDef="accion">
+            <th mat-header-cell *matHeaderCellDef>
+                Accion
+            </th>
+            <td mat-cell *matCellDef="let element"> accion </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

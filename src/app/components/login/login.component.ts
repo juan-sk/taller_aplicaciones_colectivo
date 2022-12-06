@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
       let response = await this.authService.login(payload)
       console.log(response)
       //guardar token
+      this.guardarToken(response as string)
       //guardar perfil
       if (this.returnUrl) {
         this.router.navigate([this.returnUrl])

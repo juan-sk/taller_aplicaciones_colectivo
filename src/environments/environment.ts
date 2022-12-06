@@ -8,7 +8,7 @@ export const environment = {
     login: '',
     flota: 'https://www.boredapi.com/api/',
     informe: '',
-    usuario: '',
+    usuario: 'http://localhost:8080/',
 
   }
 };

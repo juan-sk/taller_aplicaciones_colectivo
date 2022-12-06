@@ -5,25 +5,16 @@ import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CrearComponent } from './crear/crear.component';
-export interface Usuario {
-  rut: string;
-  nombre: string;
-  apellido: string;
-  movil: string;
-}
+import { UsuarioService } from 'src/app/services/usuario/usuario.service';
+import { Usuario } from 'src/app/domain/objetos/usuario/Usuario';
+// export interface Usuario {
+//   rut: string;
+//   nombre: string;
+//   apellido: string;
+//   movil: string;
+// }
 
-const ELEMENT_DATA: Usuario[] = [
-  { rut: "11.111.111-1", nombre: 'Larrys', apellido: 'Dixon', movil: '23' },
-  { rut: "11.111.111-1", nombre: 'Andrews', apellido: 'Taylor', movil: '45' },
-  { rut: "11.111.111-1", nombre: 'Jamess', apellido: 'Wilson', movil: '22' },
-  { rut: "11.111.111-1", nombre: 'Raymonds', apellido: 'Leon', movil: '12' },
-  { rut: "11.111.111-1", nombre: 'Janets', apellido: 'Smith', movil: '1' },
-  { rut: "11.111.111-1", nombre: 'Elizabeths', apellido: 'Monroe', movil: '55' },
-  { rut: "11.111.111-1", nombre: 'Jeffs', apellido: 'Meza', movil: '34' },
-  { rut: "11.111.111-1", nombre: 'Kyles', apellido: 'Patton', movil: '42' },
-  { rut: "11.111.111-1", nombre: 'Lauras', apellido: 'Jackson', movil: '34' },
-  { rut: "11.111.111-1", nombre: 'Jennifers', apellido: 'Lee', movil: '66' },
-];
+
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',
@@ -31,16 +22,21 @@ const ELEMENT_DATA: Usuario[] = [
 })
 export class UsuariosComponent implements OnInit {
 
-  ngOnInit(): void {
-  }
-
   displayedColumns: string[] = ['rut', 'nombre', 'apellido', 'movil', "accion"];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<Usuario>();
 
   constructor(private _liveAnnouncer: LiveAnnouncer,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog, private usuarioService: UsuarioService) { }
 
   @ViewChild(MatSort) sort: MatSort = new MatSort();
+
+  ngOnInit(): void {
+    this.usuarioService.listarUusarios().subscribe({
+      next: (v) => this.dataSource = new MatTableDataSource(v.users),
+      error: (e) => console.log({ e }),
+      complete: () => console.info('complete')
+    })
+  }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;

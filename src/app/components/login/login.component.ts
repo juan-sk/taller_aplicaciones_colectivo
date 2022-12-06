@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginResponse } from 'src/app/domain/login/LoginResponse';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -8,9 +9,9 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  user: string = "";
-  pass: string = "";
+  msg: string = ""
+  usuario: string = "";
+  password: string = "";
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
@@ -37,25 +38,50 @@ export class LoginComponent implements OnInit {
 
     //obtenerParametros
     let payload = {
-      user: this.user,
-      password: this.pass
-    }
-    try {
-      //validar con backend
-      let response = await this.authService.login(payload)
-      console.log(response)
-      //guardar token
-      this.guardarToken(response as string)
-      //guardar perfil
-      if (this.returnUrl) {
-        this.router.navigate([this.returnUrl])
-      } else {
-        this.router.navigate(["/"])
-      }
-    } catch (error) {
-
+      usuario: this.usuario,
+      password: this.password
     }
 
+
+    this.authService.login(payload).subscribe({
+      next: (v) => {
+        console.log(v)
+        this.msg = ""
+        //guardar token
+        this.guardarToken(v.token)
+        this.authService.setPerfil(v.user);
+
+        //guardar perfil
+        if (this.returnUrl) {
+          console.log("a", this.returnUrl)
+          this.router.navigate([this.returnUrl + ""]).catch(e => console.log(e))
+        } else {
+          console.log("b")
+          if (v.user.tipoUsuario == 0) {
+            console.log("c")
+            this.router.navigate(["/garita"])
+
+          } else if (v.user.tipoUsuario == 1) {
+            console.log("d")
+            this.router.navigate(["/colectivo"])
+
+          } else {
+            console.log("e")
+
+            this.router.navigate(["/"])
+          }
+        }
+      },
+      error: (e) => this.msg = "ocurrio un error al intentar login, intente nuevamente",
+      complete: () => console.log("completed")
+    })
+
+
+
+
+  }
+  cosa() {
+    this.router.navigate([this.returnUrl])
 
   }
   guardarToken(token: string) {

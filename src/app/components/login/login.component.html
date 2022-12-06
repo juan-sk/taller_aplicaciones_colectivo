@@ -11,18 +11,20 @@
         <div class="form-group">
           <label for="exampleInputEmail1">Nombre de Usuario</label>
           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-            placeholder="usuario" [(ngModel)]="user">
+            placeholder="usuario" [(ngModel)]="usuario">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Contraseña</label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña"
-            [(ngModel)]="pass">
+            [(ngModel)]="password">
         </div>
 
         <button class="btn btn-primary" (click)="login()">Iniciar Sesion</button>
         <br><br>
+        <h4>{{msg}}</h4>
       </div>
     </div>
     <div class="col-md-3"></div>
+    <button (click)="cosa()">cosas</button>
   </div>
 </div>

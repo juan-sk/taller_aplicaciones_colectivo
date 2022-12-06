@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: "", component: MapaPasajeroComponent },
   { path: "login", component: LoginComponent },
   { path: "colectivo", component: ContabilizadorComponent, canActivate: [AuthGuard] },
-  { path: "garita", component: DashboardComponent },
+  { path: "garita", component: DashboardComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

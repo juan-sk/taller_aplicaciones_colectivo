@@ -5,7 +5,7 @@ export class Usuario {
     apellido: string = ""
     password: string = ""
     movil: number = 0
-    tipoUsuario: number = 0
+    tipoUsuario: number = -1
 
     /**
      *

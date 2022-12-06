@@ -7,6 +7,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { CrearComponent } from './crear/crear.component';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { Usuario } from 'src/app/domain/objetos/usuario/Usuario';
+import { ModComponent } from './mod/mod.component';
 // export interface Usuario {
 //   rut: string;
 //   nombre: string;
@@ -31,17 +32,20 @@ export class UsuariosComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort = new MatSort();
 
   ngOnInit(): void {
-    this.usuarioService.listarUusarios().subscribe({
-      next: (v) => this.dataSource = new MatTableDataSource(v.users),
-      error: (e) => console.log({ e }),
-      complete: () => console.info('complete')
-    })
+    this.actualizarTalba()
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
 
+  actualizarTalba() {
+    this.usuarioService.listarUusarios().subscribe({
+      next: (v) => this.dataSource = new MatTableDataSource(v.users),
+      error: (e) => console.log({ e }),
+      complete: () => console.info('complete')
+    })
+  }
   /** Announce the change in sort state for assistive technology. */
   announceSortChange(sortState: Sort) {
     // This example uses English messages. If your application supports
@@ -62,7 +66,28 @@ export class UsuariosComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.actualizarTalba()
+      // this.animal = result;
+    });
+
+  }
+  modificar(elemento: any) {
+    const dialogRef = this.dialog.open(ModComponent, {
+      width: '500px',
+      data: { usuario: elemento },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.actualizarTalba()
+      // this.animal = result;
+    });
+  }
+  eliminar(elemento: any) {
+    const dialogRef = this.dialog.open(ModComponent, {
+      width: '500px',
+      data: { usuario: elemento },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.actualizarTalba()
       // this.animal = result;
     });
 

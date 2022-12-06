@@ -1,9 +1,12 @@
+<h1>
+    modificacion de usuario
+</h1>
 <div class="row">
     <form class="example-form" (ngSubmit)="enviar()" [formGroup]=usuarioForm>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Rut</mat-label>
-            <input matInput placeholder="Rut" value="" formControlName="rut">
+            <input matInput placeholder="Rut" value="data.usuario.rut" formControlName="rut">
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Nombre</mat-label>
@@ -24,9 +27,9 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Tipo Usuario</mat-label>
-            <mat-select formControlName="tipoUsuario">
-                <mat-option value="0">Admin</mat-option>
-                <mat-option value="1">Colectivo</mat-option>
+            <mat-select formControlName="tipoUsuario" [(value)]="data.usuario.tipoUsuario">
+                <mat-option [value]="0">Admin</mat-option>
+                <mat-option [value]="1">Colectivo</mat-option>
 
             </mat-select>
         </mat-form-field>

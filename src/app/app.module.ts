@@ -33,6 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { MantFlotaComponent } from './components/supervisor/admin-flota/mant-flota/mant-flota.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+import { ModComponent } from './components/supervisor/usuarios/mod/mod.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +52,7 @@ import { HttpClientModule } from '@angular/common/http';
     VisFlotaComponent,
     CrearComponent,
     MantFlotaComponent,
+    ModComponent,
 
   ],
 
@@ -70,9 +73,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
-  providers: [CrearComponent,],
+  providers: [CrearComponent, ModComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

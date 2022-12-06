@@ -34,7 +34,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MantFlotaComponent } from './components/supervisor/admin-flota/mant-flota/mant-flota.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
-import { ModComponent } from './components/supervisor/usuarios/mod/mod.component'
+import { ModComponent } from './components/supervisor/usuarios/mod/mod.component';
+import { ConfirmarComponent } from './components/comunes/confirmar/confirmar.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +54,7 @@ import { ModComponent } from './components/supervisor/usuarios/mod/mod.component
     CrearComponent,
     MantFlotaComponent,
     ModComponent,
+    ConfirmarComponent,
 
   ],
 
@@ -76,7 +78,7 @@ import { ModComponent } from './components/supervisor/usuarios/mod/mod.component
     HttpClientModule,
     MatIconModule
   ],
-  providers: [CrearComponent, ModComponent],
+  providers: [CrearComponent, ModComponent, ConfirmarComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

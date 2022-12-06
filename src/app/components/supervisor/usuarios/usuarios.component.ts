@@ -8,6 +8,7 @@ import { CrearComponent } from './crear/crear.component';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service';
 import { Usuario } from 'src/app/domain/objetos/usuario/Usuario';
 import { ModComponent } from './mod/mod.component';
+import { ConfirmarComponent } from '../../comunes/confirmar/confirmar.component';
 // export interface Usuario {
 //   rut: string;
 //   nombre: string;
@@ -82,11 +83,18 @@ export class UsuariosComponent implements OnInit {
     });
   }
   eliminar(elemento: any) {
-    const dialogRef = this.dialog.open(ModComponent, {
+    const dialogRef = this.dialog.open(ConfirmarComponent, {
       width: '500px',
-      data: { usuario: elemento },
+
     });
     dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.usuarioService.eliminar(elemento).subscribe({
+          next: (v) => { console.log(v) },
+          error: (e) => console.log({ e }),
+          complete: () => this.actualizarTalba()
+        })
+      }
       this.actualizarTalba()
       // this.animal = result;
     });

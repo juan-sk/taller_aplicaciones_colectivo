@@ -6,10 +6,11 @@ export const environment = {
   production: false,
   api: {
     login: 'http://localhost:8080/login ',
-    flota: 'https://www.boredapi.com/api/',
-    informe: '',
-    usuario: 'http://localhost:8080/',
-
+    // flota: 'https://www.boredapi.com/api/',
+    garita_informe: '',
+    garita_usuario: 'http://localhost:8080/garita/usuario',
+    garita_colectivo: "http://localhost:8080/garita/colectivo",
+    garita_ubicacion: "http://localhost:8080/garita/ubicaciones"
   }
 };
 

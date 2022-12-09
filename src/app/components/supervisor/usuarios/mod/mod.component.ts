@@ -80,7 +80,7 @@ export class ModComponent implements OnInit {
   enviar() {
     let form = this.usuarioForm.value;
     console.log(this.usuarioForm.value)
-    let usuario: Usuario = Usuario.fromForm(form)
+    let usuario: Usuario = Usuario.fromForm(form, this.data.usuario.id)
     this.usuarioService.modificaUsuario(usuario).subscribe({
       next: (v) => { console.log(v) },
       error: (e) => console.log({ e }),

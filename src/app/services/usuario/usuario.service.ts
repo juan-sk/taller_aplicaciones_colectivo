@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class UsuarioService {
 
   constructor(private http: HttpClient) { }
-  baseUrl = environment.api.usuario + "usuario";
+  baseUrl = environment.api.garita_usuario;
 
   crearUsuario(usuario: Usuario) {
     return this.http.post(this.baseUrl, usuario);

@@ -10,20 +10,21 @@ import { environment } from 'src/environments/environment';
 export class FlotaService {
 
   constructor(private http: HttpClient) { }
-  baseUrl = environment.api.flota;
+  baseUrl = environment.api.garita_colectivo;
   crearColectivo(data: Colectivo): Observable<any> {
-    return this.http.post(this.baseUrl + 'crear', data)
+    return this.http.post(this.baseUrl, data)
   }
   modificarColectio(data: Colectivo): Observable<any> {
-    return this.http.post(this.baseUrl + 'modificar', data)
+    return this.http.post(this.baseUrl, data)
 
   }
   eliminarColectivo(data: Colectivo): Observable<any> {
-    return this.http.post(this.baseUrl + 'eliminar', data)
+    return this.http.post(this.baseUrl, data)
 
   }
   listarColectivos(): Observable<any> {
-    return this.http.get(this.baseUrl + 'activity/')
+    return this.http.get(this.baseUrl)
 
   }
+
 }

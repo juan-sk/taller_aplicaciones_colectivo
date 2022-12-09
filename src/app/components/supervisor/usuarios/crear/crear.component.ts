@@ -67,7 +67,7 @@ export class CrearComponent implements OnInit {
   enviar() {
     let form = this.usuarioForm.value;
     console.log(this.usuarioForm.value)
-    let usuario: Usuario = Usuario.fromForm(form)
+    let usuario: Usuario = Usuario.fromForm(form, 0)
     this.usuarioService.crearUsuario(usuario).subscribe({
       next: (v) => { console.log(v) },
       error: (e) => console.log({ e }),

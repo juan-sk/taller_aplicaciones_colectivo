@@ -10,7 +10,8 @@ export const environment = {
     garita_informe: '',
     garita_usuario: 'http://localhost:8080/garita/usuario',
     garita_colectivo: "http://localhost:8080/garita/colectivo",
-    garita_ubicacion: "http://localhost:8080/garita/ubicaciones"
+    garita_ubicacion: "http://localhost:8080/garita/ubicaciones",
+    colectivo: "http://localhost:8080/colectivo"
   }
 };
 

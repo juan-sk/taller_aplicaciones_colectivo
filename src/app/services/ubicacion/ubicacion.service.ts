@@ -15,4 +15,5 @@ export class UbicacionService {
     return this.http.get(this.baseUrl + '/obtener_ultimas_ubicaciones')
 
   }
+  enviarUbicacionColectivo() { }
 }

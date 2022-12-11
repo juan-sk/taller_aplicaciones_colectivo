@@ -2,20 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Colectivo } from 'src/app/domain/flota/Colectivo';
+import { FlotaService } from 'src/app/services/flota/flota.service';
+import { ConfirmarComponent } from '../../comunes/confirmar/confirmar.component';
 import { MantFlotaComponent } from './mant-flota/mant-flota.component';
+import { ModFlotaComponent } from './mod-flota/mod-flota.component';
 
-const ELEMENT_DATA: Colectivo[] = [
-  { nroColectivo: "01", patente: 'WS-JS-33', dueno: 'Dixon', marca: 'TOYOTA', modelo: "toyota" },
-  { nroColectivo: "02", patente: 'YR-DT-24', dueno: 'Taylor', marca: 'TOYOTA', modelo: "toyota" },
-  { nroColectivo: "03", patente: 'YH-DR-77', dueno: 'Wilson', marca: 'NISSAN', modelo: "toyota" },
-  { nroColectivo: "04", patente: 'RT-DF-56', dueno: 'Leon', marca: 'NISSAN', modelo: "toyota" },
-  { nroColectivo: "05", patente: 'CF-FY-34', dueno: 'Smith', marca: 'TOYOTA', modelo: "toyota" },
-  { nroColectivo: "06", patente: 'TS-WY-89', dueno: 'Monroe', marca: 'TOYOTA', modelo: "toyota" },
-  { nroColectivo: "07", patente: 'WS-LJ-57', dueno: 'Meza', marca: 'TOYOTA', modelo: "toyota" },
-  { nroColectivo: "08", patente: 'QX-GH-67', dueno: 'Patton', marca: 'TOYOTA', modelo: "toyota" },
-  { nroColectivo: "09", patente: 'FL-XY-53', dueno: 'Jackson', marca: '', modelo: "toyota" },
-  { nroColectivo: "10", patente: 'MN-ZR-86', dueno: 'Lee', marca: 'TOYOTA', modelo: "toyota" },
-];
 @Component({
   selector: 'app-admin-flota',
   templateUrl: './admin-flota.component.html',
@@ -24,12 +15,14 @@ const ELEMENT_DATA: Colectivo[] = [
 
 export class AdminFlotaComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,
+    private flotaService: FlotaService) { }
 
 
   displayedColumns: string[] = ['nroColectivo', 'patente', 'dueno', 'marca', 'modelo', 'accion'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource([]);
   ngOnInit(): void {
+    this.actualizarTalba()
   }
   crearColectivo() {
 
@@ -44,5 +37,39 @@ export class AdminFlotaComponent implements OnInit {
     });
 
   }
+  modificar(elemento: any) {
+    const dialogRef = this.dialog.open(ModFlotaComponent, {
+      width: '500px',
+      data: { colectivo: elemento },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.actualizarTalba()
+      // this.animal = result;
+    });
+  }
+  eliminar(elemento: any) {
+    const dialogRef = this.dialog.open(ConfirmarComponent, {
+      width: '500px',
 
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.flotaService.eliminarColectivo(elemento).subscribe({
+          next: (v) => { console.log(v) },
+          error: (e) => console.log({ e }),
+          complete: () => this.actualizarTalba()
+        })
+      }
+      this.actualizarTalba()
+      // this.animal = result;
+    });
+
+  }
+  actualizarTalba() {
+    this.flotaService.listarColectivos().subscribe({
+      next: (v) => this.dataSource = new MatTableDataSource(v.listaColectivos),
+      error: (e) => console.log({ e }),
+      complete: () => console.info('complete')
+    })
+  }
 }

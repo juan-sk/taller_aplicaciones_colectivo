@@ -21,7 +21,7 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="ordenar por numero colectivo">
                 N° Colectivo
             </th>
-            <td mat-cell *matCellDef="let element"> {{element.nroColectivo}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.movil}} </td>
         </ng-container>
 
         <!-- Name Column -->
@@ -49,15 +49,24 @@
         </ng-container>
         <ng-container matColumnDef="modelo">
             <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Ordenar por modelo">
-                odelo
+                Modelo
             </th>
             <td mat-cell *matCellDef="let element"> {{element.modelo}} </td>
         </ng-container>
         <ng-container matColumnDef="accion">
             <th mat-header-cell *matHeaderCellDef>
-                Accion
+
             </th>
-            <td mat-cell *matCellDef="let element"> accion </td>
+            <td mat-cell *matCellDef="let element">
+                <button (click)="modificar(element)">
+
+                    <mat-icon> edit</mat-icon>
+                </button>
+                <button (click)="eliminar(element)">
+
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

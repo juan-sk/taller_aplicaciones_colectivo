@@ -1,49 +1,42 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InformeService {
 
-  constructor() { }
 
 
-  getInforme1() {
-    let contenidoTemporal = [
-      {
-        nombre: "pepe",
-        apellido: "martinez"
-      },
-      {
-        nombre: "pepe2",
-        apellido: "martinez2"
-      },
-      {
-        nombre: "pepe3",
-        apellido: "martinez3"
-      },
-    ]
-    return contenidoTemporal;
+  constructor(private http: HttpClient) { }
+  baseUrl = environment.api.garita_informe;
+
+  getInforme1(): Observable<any> {
+    return this.http.get(this.baseUrl + '/viajes_pasajeros')
+
   }
-  getInforme2() {
-    let contenidoTemporal = [
-      {
-        nombre: "pepe",
-        apellido: "martinez",
-        edad: 21
-      },
-      {
-        nombre: "pepe2",
-        apellido: "martinez2",
-        edad: 23
-      },
-      {
-        nombre: "pepe3",
-        apellido: "martinez3",
-        edad: 25
-      },
-    ]
-    return contenidoTemporal;
+  // getInforme1() {
+  //   let contenidoTemporal = [
+  //     {
+  //       nombre: "pepe",
+  //       apellido: "martinez"
+  //     },
+  //     {
+  //       nombre: "pepe2",
+  //       apellido: "martinez2"
+  //     },
+  //     {
+  //       nombre: "pepe3",
+  //       apellido: "martinez3"
+  //     },
+  //   ]
+  //   return contenidoTemporal;
+  // }
+  getInforme2(): Observable<any> {
+    return this.http.get(this.baseUrl + '/viajes_pasajeros_por_conductor')
+
   }
 
 

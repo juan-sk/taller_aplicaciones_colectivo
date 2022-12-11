@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FlotaService } from 'src/app/services/flota/flota.service';
 
-import { tap } from 'rxjs/operators'
+import { Colectivo } from 'src/app/domain/flota/Colectivo';
 @Component({
   selector: 'app-mant-flota',
   templateUrl: './mant-flota.component.html',
@@ -18,30 +18,43 @@ export class MantFlotaComponent implements OnInit {
 
   ) { }
   flotaForm = new FormGroup({
-    nombre: new FormControl("",
+    movil: new FormControl("",
       [
         Validators.required,
-        Validators.maxLength(20),
-        Validators.minLength(4),
+        Validators.maxLength(3),
+        Validators.minLength(1),
       ]
     ),
-    apellido: new FormControl("",
+    patente: new FormControl("",
+      [
+        Validators.required,
+        Validators.maxLength(8),
+        Validators.minLength(8)
+      ]
+    ),
+    dueno: new FormControl("",
       [
         Validators.required,
         Validators.maxLength(20),
         Validators.minLength(4)
       ]
     ),
-    tipoUsuario: new FormControl("",
+    marca: new FormControl("",
       [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(20),
+        Validators.minLength(4)
       ]
     ),
-    fechaNacimiento: new FormControl("",
+    modelo: new FormControl("",
       [
-        Validators.required
+        Validators.required,
+        Validators.maxLength(20),
+        Validators.minLength(4)
       ]
     ),
+
+
 
   })
   ngOnInit(): void {
@@ -50,24 +63,16 @@ export class MantFlotaComponent implements OnInit {
   async enviar() {
     let form = this.flotaForm.value;
 
+    let c: Colectivo = Colectivo.fromForm(form, 0)
 
-    if (this.creacion) {
-      this.flotaService.crearColectivo(form).subscribe({
-        next: (v) => console.log({ v }),
-        error: (e) => this.errorCreando,
-        complete: () => console.info('complete')
-      })
+    this.flotaService.crearColectivo(c).subscribe({
+      next: (v) => {
 
-    } else {
-      this.flotaService.modificarColectio(form).subscribe({
-        next: (v) => console.log({ v }),
-        error: (e) => this.errorModificando(),
-        complete: () => console.info('complete')
-      })
-
-      // this.flotaService.modificarColectio(form);
-    }
-    console.log(this.flotaForm.value)
+        this.cerrar()
+      },
+      error: (e) => this.errorCreando,
+      complete: () => console.info('complete')
+    })
   }
   cerrar() {
     this.dialogRef.close()

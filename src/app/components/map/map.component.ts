@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-map',
@@ -11,6 +11,7 @@ export class MapComponent implements OnInit {
   @Input() center: any;
   @Input() options: any;
   @Input() polylineOptions = {}
+  @Output() mapClick: EventEmitter<any> = new EventEmitter<any>()
   zoom = 18;
 
   ngOnInit() {
@@ -47,6 +48,7 @@ export class MapComponent implements OnInit {
     console.log({ lat: event.latLng.lat(), lng: event.latLng.lng() })
     let coords = { lat: event.latLng.lat(), lng: event.latLng.lng() }
     // this.creaPath(coords)
+    this.mapClick.emit(coords)
 
   }
 

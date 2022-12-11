@@ -14,6 +14,10 @@ export class MapaPasajeroComponent implements OnInit {
     lat: 0,
     lng: 0
   };
+  ubicacionSimulada: google.maps.LatLngLiteral = {
+    lat: -33.485649027120154,
+    lng: -70.61909642872637
+  }
   options: google.maps.MapOptions = new Object({
     mapTypeId: 'roadmap',
     zoomControl: false,
@@ -55,24 +59,18 @@ export class MapaPasajeroComponent implements OnInit {
 
   polylineOptions = new Ruta(this.path)
   showMap: boolean = false;
-
+  activarSimulacionUbicacionPasajero: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.center = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-      };
-      console.log(this.center)
-    });
     setInterval(() => {
+      this.ubicarPasajero(this.activarSimulacionUbicacionPasajero)
       if (this.markers.length > 0) {
 
         this.updateMap()
         this.showMap = true;
       }
-    }, 1000)
+    }, 10000)
   }
 
   height = window.screen.height;
@@ -149,5 +147,39 @@ export class MapaPasajeroComponent implements OnInit {
     this.markers = elementosMapa;
 
 
+  }
+  simularUbicacion() {
+    this.center.lat = this.ubicacionSimulada.lat
+    this.center.lng = this.ubicacionSimulada.lng
+    this.center = {
+      lat: this.ubicacionSimulada.lat,
+      lng: this.ubicacionSimulada.lng
+    }
+  }
+  obtenerUbicacionGPS() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.center = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      };
+
+    });
+  }
+  ubicarPasajero(simulacion: boolean) {
+    if (simulacion) {
+      this.simularUbicacion();
+    } else {
+      this.obtenerUbicacionGPS();
+
+    }
+
+
+  }
+  activarSimulacion(event: any) {
+    this.activarSimulacionUbicacionPasajero = event.checked
+  }
+  mapClick(event: any) {
+    this.ubicacionSimulada.lat = event.lat;
+    this.ubicacionSimulada.lng = event.lng;
   }
 }

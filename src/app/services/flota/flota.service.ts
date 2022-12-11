@@ -19,7 +19,7 @@ export class FlotaService {
 
   }
   eliminarColectivo(data: Colectivo): Observable<any> {
-    return this.http.post(this.baseUrl, data)
+    return this.http.delete(this.baseUrl, { params: { idColectivo: data.idColectivo } })
 
   }
   listarColectivos(): Observable<any> {

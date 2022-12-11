@@ -20,18 +20,33 @@ export class InformesComponent implements OnInit {
   }
 
   informe1() {
-    let contenidoInforme = this.informeService.getInforme1();
-    this.descargarInforme(contenidoInforme);
+    let contenidoInforme = this.informeService.getInforme1().subscribe({
+      next: (v) => {
+
+        this.descargarInforme(v.listaViajesPasajeros, "Reporte_viajes_y_pasajeros");
+
+      },
+      error: (e) => console.log({ e }),
+      complete: () => console.log("completado")
+    });
+    // this.descargarInforme(contenidoInforme);
   }
   informe2() {
-    let contenidoInforme = this.informeService.getInforme2();
-    this.descargarInforme(contenidoInforme);
+    let contenidoInforme = this.informeService.getInforme2().subscribe({
+      next: (v) => {
+
+        this.descargarInforme(v.listaViajesPasajeros, "Reporte_viajes_y_pasajeros_por_conductor");
+
+      },
+      error: (e) => console.log({ e }),
+      complete: () => console.log("completado")
+    });
   }
 
-  descargarInforme(contenidoInforme: any) {
+  descargarInforme(contenidoInforme: any, nombreInfomre: string) {
     let formatoExcel = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8'
     let archivoExcel = this.excelService.generateExcelFile(contenidoInforme)
-    this.saveFileService.save(archivoExcel, 'Reporte.xlsx', formatoExcel);
+    this.saveFileService.save(archivoExcel, nombreInfomre + '.xlsx', formatoExcel);
   }
 
 }

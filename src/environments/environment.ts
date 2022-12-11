@@ -7,10 +7,11 @@ export const environment = {
   api: {
     login: 'http://localhost:8080/login ',
     // flota: 'https://www.boredapi.com/api/',
-    garita_informe: '',
+
     garita_usuario: 'http://localhost:8080/garita/usuario',
     garita_colectivo: "http://localhost:8080/garita/colectivo",
     garita_ubicacion: "http://localhost:8080/garita/ubicaciones",
+    garita_informe: "http://localhost:8080/garita/informe",
     colectivo: "http://localhost:8080/colectivo"
   }
 };

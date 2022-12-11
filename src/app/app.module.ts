@@ -36,6 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { ModComponent } from './components/supervisor/usuarios/mod/mod.component';
 import { ConfirmarComponent } from './components/comunes/confirmar/confirmar.component'
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ModFlotaComponent } from './components/supervisor/admin-flota/mod-flota/mod-flota.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +57,7 @@ import { ConfirmarComponent } from './components/comunes/confirmar/confirmar.com
     MantFlotaComponent,
     ModComponent,
     ConfirmarComponent,
+    ModFlotaComponent,
 
   ],
 
@@ -76,7 +79,8 @@ import { ConfirmarComponent } from './components/comunes/confirmar/confirmar.com
     MatSelectModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    MatSlideToggleModule
   ],
   providers: [CrearComponent, ModComponent, ConfirmarComponent],
   bootstrap: [AppComponent]

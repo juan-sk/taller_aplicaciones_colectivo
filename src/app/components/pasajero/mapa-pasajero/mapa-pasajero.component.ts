@@ -118,8 +118,8 @@ export class MapaPasajeroComponent implements OnInit {
     // this.offset++;
     let pos = this.path[this.offset]
     let pos2 = this.path[this.offset + 1]
-    let colectivo: Colectivo = new Colectivo(pos, "undefined")
-    let colectivo2: Colectivo = new Colectivo(pos2, "colectivo 2")
+    let colectivo: Colectivo = new Colectivo(pos, "23")
+    let colectivo2: Colectivo = new Colectivo(pos2, "24")
     let listaBase = [colectivo, colectivo2]
 
 

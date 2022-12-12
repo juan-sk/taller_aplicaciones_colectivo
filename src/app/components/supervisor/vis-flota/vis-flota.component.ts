@@ -74,7 +74,7 @@ export class VisFlotaComponent implements OnInit {
         this.updateMap()
         this.showMap = true;
       }
-    }, 1000)
+    }, 10000)
   }
 
   height = window.screen.height;
@@ -90,7 +90,7 @@ export class VisFlotaComponent implements OnInit {
 
     this.offset++;
     let pos = new google.maps.LatLng(simplepos);
-    let colectivo: Colectivo = new Colectivo(pos, "colectivo 1")
+    let colectivo: Colectivo = new Colectivo(pos, "11")
     let listaBase = [colectivo]
 
 
@@ -122,8 +122,8 @@ export class VisFlotaComponent implements OnInit {
     // this.offset++;
     let pos = this.path[this.offset]
     let pos2 = this.path[this.offset + 1]
-    let colectivo: Colectivo = new Colectivo(pos, "undefined")
-    let colectivo2: Colectivo = new Colectivo(pos2, "colectivo 2")
+    let colectivo: Colectivo = new Colectivo(pos, "23")
+    let colectivo2: Colectivo = new Colectivo(pos2, "24")
     let listaBase = [colectivo, colectivo2]
 
 

@@ -5,14 +5,15 @@
 export const environment = {
   production: false,
   api: {
-    login: 'http://localhost:8080/login ',
+    // inacap.oxux.cl
+    login: 'https://inacap.oxus.cl:8444/login ',
     // flota: 'https://www.boredapi.com/api/',
 
-    garita_usuario: 'http://localhost:8080/garita/usuario',
-    garita_colectivo: "http://localhost:8080/garita/colectivo",
-    garita_ubicacion: "http://localhost:8080/garita/ubicaciones",
-    garita_informe: "http://localhost:8080/garita/informe",
-    colectivo: "http://localhost:8080/colectivo"
+    garita_usuario: 'https://inacap.oxus.cl:8444/garita/usuario',
+    garita_colectivo: "https://inacap.oxus.cl:8444/garita/colectivo",
+    garita_ubicacion: "https://inacap.oxus.cl:8444/garita/ubicaciones",
+    garita_informe: "https://inacap.oxus.cl:8444/garita/informe",
+    colectivo: "https://inacap.oxus.cl:8444/colectivo"
   }
 };
 
